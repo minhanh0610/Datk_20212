@@ -12,7 +12,7 @@ namespace Datk.Api.Controllers
     {
         public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
 
-        private readonly LogInManager _logInManager;
+        /*private readonly LogInManager _logInManager;
 
         static AccountController()
         {
@@ -87,6 +87,6 @@ namespace Datk.Api.Controllers
             {
                 throw new UserFriendlyException("Invalid request!");
             }
-        }
+        }*/
     }
 }

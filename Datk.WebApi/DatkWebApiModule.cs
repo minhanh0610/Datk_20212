@@ -18,7 +18,7 @@ namespace Datk
                 .ForAll<IApplicationService>(typeof(DatkApplicationModule).Assembly, "app")
                 .Build();
 
-            Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
+            //Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Datk.Services
     public interface IServiceAppService : IApplicationService
     {
         [HttpGet]
-        Task<List<GetServiceOutput>> GetServices(ServiceState state, int? rootServiceId);
+        Task<List<GetServiceOutput>> GetServices(ServiceState state, int? rootServiceId, int typeSubServiceId);
 
         [HttpPost]
         Task CreateService(CreateServiceInput input);

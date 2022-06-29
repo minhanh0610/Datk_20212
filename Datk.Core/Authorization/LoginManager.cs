@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datk.Authorization
 {
-    public class LogInManager : AbpLogInManager<Tenant, Role, User>
+    /*public class LogInManager : AbpLogInManager<Tenant, Role, User>
     {
         public LogInManager(
             UserManager userManager,
@@ -32,5 +32,5 @@ namespace Datk.Authorization
         {
 
         }
-    }
+    }*/
 }

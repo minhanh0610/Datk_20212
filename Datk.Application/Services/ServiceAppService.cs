@@ -47,7 +47,7 @@ namespace Datk.Services
             else throw new Exception($"Dịch vụ với id { id } không tồn tại");
         }
 
-        public async Task<List<GetServiceOutput>> GetServices(ServiceState state, int? rootServiceId)
+        public async Task<List<GetServiceOutput>> GetServices(ServiceState state, int? rootServiceId, int typeRootServiceId)
         {
             var query = from service in _serviceRepository.GetAll()
                         where service.State == state
