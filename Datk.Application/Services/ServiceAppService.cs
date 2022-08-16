@@ -29,6 +29,8 @@ namespace Datk.Services
 
             var service = new Service();
             service.TypeSubServiceID = input.TypeSubServiceID;
+            service.Name = input.Name;
+            service.Contact = input.Contact;
 
             if (service.RootServiceID != null)
                 service.RootServiceID = input.RootServiceID;
@@ -47,11 +49,11 @@ namespace Datk.Services
             else throw new Exception($"Dịch vụ với id { id } không tồn tại");
         }
 
-        public async Task<List<GetServiceOutput>> GetServices(ServiceState state, int? rootServiceId, int typeRootServiceId)
+        public async Task<List<GetServiceOutput>> GetServices(ServiceState state, int typeSubServiceId)
         {
             var query = from service in _serviceRepository.GetAll()
                         where service.State == state
-                        && service.RootServiceID == rootServiceId
+                        && service.TypeSubServiceID == typeSubServiceId
                         select service;
             List<Service> services = query.ToList();
 
@@ -64,11 +66,39 @@ namespace Datk.Services
                 {
                     Id = service.Id,
                     State = service.State,
-                    Name = basicInfo.name,
+                    Name = service.Name,
                     Address = basicInfo.address,
-                    Contact = basicInfo.contact,
+                    Contact = service.Contact,
                     Name_Represent = representInfo.name_represent,
-                    
+
+                });
+            }
+
+            return result;
+        }
+
+        public async Task<List<GetServiceOutput>> SearchService(string sortBy, int? rootServiceId, int typeSubServiceId)
+        {
+            var query = from service in _serviceRepository.GetAll()
+                        where service.RootServiceID == rootServiceId
+                        && service.TypeSubServiceID == typeSubServiceId
+                        && service.Name.Contains(sortBy) || service.Contact.Contains(sortBy)
+                        select service;
+            List<Service> services = query.ToList();
+
+            var result = new List<GetServiceOutput>();
+            foreach (var service in services)
+            {
+                dynamic basicInfo = JObject.Parse(service.Basic_Information);
+                dynamic representInfo = JObject.Parse(service.Represent_Information);
+                result.Add(new GetServiceOutput()
+                {
+                    Id = service.Id,
+                    State = service.State,
+                    Name = service.Name,
+                    Address = basicInfo.address,
+                    Contact = service.Contact,
+                    Name_Represent = representInfo.name_represent,
                 });
             }
 
@@ -95,6 +125,7 @@ namespace Datk.Services
 
         }
 
+
         public async Task<ViewServiceOutput> ViewService(int id)
         {
             var result = new ViewServiceOutput();
@@ -107,11 +138,16 @@ namespace Datk.Services
             result.State = service.State;
 
             dynamic basicInfo = JObject.Parse(service.Basic_Information);
-            result.Name =  basicInfo.name;
+            result.Name =  service.Name;
             result.Address = basicInfo.address;
             result.Email = basicInfo.email;
             result.Description_Service = basicInfo.description_Service;
-            result.Contact = basicInfo.contact;
+            result.Contact = service.Contact;
+            result.SubService = basicInfo.subService ?? null;
+            result.Doctor = basicInfo.doctor ?? null;
+            result.Conclusion = basicInfo.conclusion ?? null;
+            result.Medicine = basicInfo.medicine ?? null;
+            result.ReExam = basicInfo.reExam ?? null;
 
             dynamic representInfo = JObject.Parse(service.Represent_Information);
             result.Represent = representInfo.represent;

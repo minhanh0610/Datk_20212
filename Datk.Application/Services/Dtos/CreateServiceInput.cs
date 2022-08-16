@@ -17,20 +17,28 @@ namespace Datk.Services.Dtos
         public ServiceState State { get; set; }
 
         public int CreatedBy { get; set; }
+        public string Name { get; set; }
+        public string Contact { get; set; }
 
         //Basic information
-        public string Name { get; set; }
+
         public string Address { get; set; }
         public string Email { get; set; }
         public string Description_Service { get; set; }
-        public string Contact { get; set; }
+        public Array SubService { get; set; }
+        public string Doctor { get; set; }
+        public string Conclusion { get; set; }
+        public string Medicine { get; set; }
+        public string ReExam { get; set; }
         public string Basic_Information()
         {
-            return "{\"name\": \"" + this.Name +
-                "\", \"address\": \"" + this.Address +
+            return "{\"address\": \"" + this.Address +
                 "\", \"email\": \"" + this.Email +
                 "\", \"desciption_Service\": \"" + this.Description_Service +
-                "\", \"contact\": \"" + this.Contact +
+                "\", \"doctor\": \"" + this.Doctor +
+                "\", \"conclusion\": \"" + this.Conclusion +
+                "\", \"medician\": \"" + this.Medicine +
+                "\", \"reExam\": \"" + this.ReExam +
                 "\", }";
 
         }

@@ -13,6 +13,8 @@ namespace Datk.Services
         public virtual int TypeSubServiceID { get; set; }
         public virtual int? RootServiceID { get; set; }
         public virtual int? CreatedBy { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Contact { get; set; }
         public virtual string Basic_Information { get; set; }
         public virtual string Represent_Information { get; set; }
 

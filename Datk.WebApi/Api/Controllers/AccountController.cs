@@ -1,10 +1,18 @@
-﻿using Abp.WebApi.Controllers;
-using Microsoft.Owin.Security.OAuth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using System.Web.Http;
+using Abp.Authorization;
+using Abp.Authorization.Users;
+using Abp.UI;
+using Abp.Web.Models;
+using Abp.WebApi.Controllers;
+using Datk.Api.Models;
+using Datk.Authorization;
+using Datk.Authorization.Users;
+using Datk.MultiTenancy;
+using Microsoft.Owin.Infrastructure;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OAuth;
 
 namespace Datk.Api.Controllers
 {
@@ -12,7 +20,7 @@ namespace Datk.Api.Controllers
     {
         public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
 
-        /*private readonly LogInManager _logInManager;
+        private readonly LogInManager _logInManager;
 
         static AccountController()
         {
@@ -87,6 +95,6 @@ namespace Datk.Api.Controllers
             {
                 throw new UserFriendlyException("Invalid request!");
             }
-        }*/
+        }
     }
 }

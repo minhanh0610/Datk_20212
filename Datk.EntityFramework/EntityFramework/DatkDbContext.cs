@@ -2,9 +2,11 @@
 using System.Data.Entity;
 using Abp.EntityFramework;
 using Datk.People;
+
 using Datk.Services;
 using Datk.Tasks;
 using Datk.TypeServices;
+
 
 namespace Datk.EntityFramework
 {

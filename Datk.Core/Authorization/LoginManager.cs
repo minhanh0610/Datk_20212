@@ -1,13 +1,19 @@
 ﻿using Abp.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Abp.Authorization.Users;
+using Abp.Configuration;
+using Abp.Configuration.Startup;
+using Abp.Dependency;
+using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
+using Abp.Zero.Configuration;
+using Datk.Authorization.Roles;
+using Datk.Authorization.Users;
+using Datk.MultiTenancy;
+
 
 namespace Datk.Authorization
 {
-    /*public class LogInManager : AbpLogInManager<Tenant, Role, User>
+    public class LogInManager : AbpLogInManager<Tenant, Role, User>
     {
         public LogInManager(
             UserManager userManager,
@@ -32,5 +38,5 @@ namespace Datk.Authorization
         {
 
         }
-    }*/
+    }
 }

@@ -19,7 +19,13 @@ namespace Datk.Services.Dtos
         public string Email { get; set; }
         public string Description_Service { get; set; }
         public string Contact { get; set; }
-        //public string Basic_Information { get; set; }
+        public Array SubService { get; set; }
+        public string Doctor { get; set; }
+        public string Conclusion { get; set; }
+        public string Medicine { get; set; }
+        public string ReExam { get; set; }
+
+
         //Represent information
         public string Represent { get; set; }
         public string Name_Represent { get; set; }
@@ -27,7 +33,6 @@ namespace Datk.Services.Dtos
         public string Email_Represent { get; set; }
         public string Cmnd { get; set; }
         public string Registration { get; set; }
-        //public string Represent_Information { get; set; }
 
         public DateTime CreationTime { get; set; }
         public ServiceState State { get; set; }

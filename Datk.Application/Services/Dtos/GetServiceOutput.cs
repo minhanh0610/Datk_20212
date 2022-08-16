@@ -16,6 +16,5 @@ namespace Datk.Services.Dtos
         public string Name_Represent { get; set; }
         public string Contact { get; set; }
 
-
     }
 }
